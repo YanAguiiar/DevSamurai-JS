@@ -43,26 +43,6 @@ idButaum.addEventListener('click', (e) => {
 
 });
 
-const url = 'https://hook.us1.make.com/pt78a1wba97xpm3km1of2ry83a8vfs0q';
-const data = {
-  "tipe": "TASK"
-};
-
-const xhr = new XMLHttpRequest();
-xhr.open("POST", url, true);
-xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-        const response = JSON.parse(xhr.responseText);
-        console.log('Success:', response);
-    } else if (xhr.readyState === 4) {
-        console.error('Error:', xhr.statusText);
-    }
-};
-
-xhr.send(JSON.stringify(data));
-
 
 
 // addTarefa();
