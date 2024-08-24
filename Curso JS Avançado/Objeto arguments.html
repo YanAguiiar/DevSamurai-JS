@@ -1,0 +1,18 @@
+<html>
+<meta charset="UTF-8">
+
+<script>
+  //Utilizando arguments para somar valores passados como argumentos, ao invés de mapear manualmente os argumentos
+  function somaValores() {
+    let total = 0
+    for (const n of arguments) {
+      total += n
+    }
+    return total
+  }
+
+  console.log(somaValores(1, 2, 3, 4, 5))
+</script>
+
+</html>
+

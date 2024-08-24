@@ -1,0 +1,23 @@
+<html>
+<meta charset="UTF-8">
+<script>
+  // Função que aplica outra função a cada elemento de um array
+  function mult(values, func) {
+    // Itera sobre todos os elementos do array 'values'
+    for (let i = 0; i < values.length; i++) {
+      // Aplica a função 'func' ao elemento atual do array e substitui o valor original
+      values[i] = func(values[i])
+    }
+    // Retorna o array modificado
+    return values
+  }
+
+  // Define um array de valores
+  const values = [1, 2, 3, 4, 10]
+  // Define uma função que multiplica um número por 2
+  const func = n => n * 2
+  // Chama a função 'mult' passando o array e a função como argumentos e imprime o resultado
+  console.log(mult(values, func)) // Resultado: [2, 4, 6, 8, 20]
+</script>
+
+</html>

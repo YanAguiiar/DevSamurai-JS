@@ -1,0 +1,34 @@
+<html>
+  <meta charset="UTF-8" />
+  <script>
+    // Função que recebe um valor por cópia (passagem por valor)
+    function mult(n) {
+      // Multiplica n por ele mesmo. Como n é uma cópia, isso não afeta a variável original fora da função.
+      n *= n
+      // Retorna o novo valor de n
+      return n
+    }
+
+    // Declara uma variável numVal com o valor 10
+    let numVal = 10
+    // Chama a função mult com numVal como argumento e imprime o resultado (100) no console
+    console.log(mult(numVal))
+    // Imprime o valor original de numVal (10) no console, pois não foi alterado pela função mult
+    console.log(numVal)
+
+    // Função que recebe um objeto por referência (passagem por referência)
+    function multObj(obj) {
+      // Acessa a propriedade value do objeto e a multiplica por ela mesma. Isso modifica diretamente o objeto original.
+      obj.value *= obj.value
+      // Retorna o objeto modificado
+      return obj
+    }
+
+    // Declara um objeto numObj com uma propriedade value inicializada com o valor 10
+    const numObj = { value: 10 }
+    // Chama a função multObj com numObj como argumento e imprime o objeto modificado no console ({ value: 100 })
+    console.log(multObj(numObj))
+    // Imprime novamente o objeto numObj no console, que foi modificado pela função multObj (value: 100)
+    console.log(numObj)
+  </script>
+</html>
