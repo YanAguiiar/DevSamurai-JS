@@ -6,17 +6,26 @@
   <title>To-Do</title>
 </head>
   <body>
-    <form>
+    <form id="addTask">
       <fieldset>
         <legend>Adicionar Tarefa</legend>
         <label for="">Nome da Tarefa</label> <br>
-        <input type="text" id="idFrela">
+        <input type="text" id="idFrela" placeholder="Insira o nome da Tarefa">
         <input type="submit" value="Adicionar" id="butaumEnviar">
       </fieldset>
     </form>
     <ul id="listaFrela">
      
     </ul>
-  </body> 
+<form id="removeTask">
+  <fieldset>
+    <legend>Excluir Tarefa</legend>
+    <label>ID Tarefa</label>
+    <input type="number" min="1"  placeholder="Insira apenas o ID" id="idRemover">
+    <input type="submit" value="Remover" id="butaumRemover">
+  </fieldset>
+</form>
+
+</body> 
   <script src="script.js"></script>
 </html>
