@@ -59,6 +59,11 @@ function removerElemento() {
   const elementString = elementRemover.toString();
 
   const elementDel = document.getElementById(elementString)
+  if (elementDel === null) {
+    alert('Não existe tarefa com esse ID!');
+    return;
+    
+  }
   elementDel.remove();
   idRemover.value = '';
   console.log(elementString);
