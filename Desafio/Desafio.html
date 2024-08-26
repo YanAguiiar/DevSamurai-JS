@@ -15,9 +15,24 @@
         <input type="submit" value="Adicionar" id="butaumEnviar">
       </fieldset>
     </form>
+  <div>
     <ul id="listaFrela">
      
     </ul>
+    <button id="editTask">Editar Tarefa</button>
+    <dialog>
+      <form id="editTask">
+        <fieldset>
+          <Legend>Editar Tarefa</Legend>
+          <label for="">Nome da Tarefa</label> <br>
+          <input type="text" id="new_nameTask">
+          <label>ID da Tarefa</label>
+          <input type="number" id="id_EditTask">
+          <input type="submit" value="Salvar" id="save_editTask">
+        </fieldset>
+      </form>
+    </dialog>
+  </div>
 <form id="removeTask">
   <fieldset>
     <legend>Excluir Tarefa</legend>
