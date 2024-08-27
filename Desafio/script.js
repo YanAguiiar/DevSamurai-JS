@@ -56,6 +56,7 @@ function removeTask() {
     tarefas.splice(inputRemover, 1);
     atualizarIDs();
     removerElemento();
+    
   } else {
     alert('ID inválido!');
   }
@@ -79,3 +80,29 @@ idButaum2.addEventListener('click', (e) => {
 });
 
 /* Fim area de remoção de tasks */
+const edit_Task = document.querySelector("#editTask")
+const save_editarTask = document.querySelector("#save_editTask")
+
+edit_Task.onclick = function () {
+  modal.showModal();
+}
+
+save_editarTask.onclick = function (e) {
+  modal.close();
+  e.preventDefault();
+  const id_Edit = document.getElementById('id_EditTask').value;
+  const name_Edit = document.getElementById('new_nameTask').value;
+
+  alterarItem(tarefas, id_Edit, name_Edit);
+}
+
+function alterarItem(array, id, new_Name) {
+  const tarefa = array.find(item => item.id === id);
+  if (tarefa) {
+    tarefa.nome = new_Name;
+    removerElemento();
+  }else{
+    alert('Tarefa não encontrada!');
+  }
+  
+}

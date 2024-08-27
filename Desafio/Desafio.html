@@ -11,16 +11,15 @@
       <fieldset>
         <legend>Adicionar Tarefa</legend>
         <label for="">Nome da Tarefa</label> <br>
-        <input type="text" maxlength="25" id="idFrela" placeholder="Insira o nome da Tarefa">
-        <input type="submit" value="Adicionar" id="butaumEnviar">
+        <input type="text" required minlength="5" maxlength="25" id="idFrela" placeholder="Insira o nome da Tarefa">
+        <button type="submit" id="butaumEnviar">Adicionar</button>
       </fieldset>
     </form>
   <div>
     <ul id="listaFrela">
-     
     </ul>
-    <button id="editTask">Editar Tarefa</button>
-    <dialog>
+    <button type="submit" id="editTask">Editar Tarefa</button>
+    <dialog id="modal">
       <form id="editTask">
         <fieldset>
           <Legend>Editar Tarefa</Legend>
@@ -28,7 +27,7 @@
           <input type="text" id="new_nameTask">
           <label>ID da Tarefa</label>
           <input type="number" id="id_EditTask">
-          <input type="submit" value="Salvar" id="save_editTask">
+          <button type="submit" id="save_editTask">Salvar</button>
         </fieldset>
       </form>
     </dialog>
@@ -37,8 +36,8 @@
   <fieldset>
     <legend>Excluir Tarefa</legend>
     <label>ID Tarefa</label>
-    <input type="number" min="1"  placeholder="Insira apenas o ID" id="idRemover">
-    <input type="submit" value="Remover" id="butaumRemover">
+    <input inputmode="numeric" type="number" min="1"  placeholder="Insira apenas o ID" id="idRemover">
+    <button type="submit" id="butaumRemover">Remover </button>
   </fieldset>
 </form>
 
