@@ -51,14 +51,17 @@ const idButaum2 = document.getElementById('butaumRemover');
 
 function removeTask() {
   const inputRemover = parseInt(document.getElementById('idRemover').value, 10) - 1;
+  const input = document.getElementById('idRemover');
   // Função parseInt para converter para número inteiro	
   if (inputRemover >= 0 && inputRemover < tarefas.length) {  // Validar IDs ao remover
     tarefas.splice(inputRemover, 1);
+    input.value = '';
     atualizarIDs();
     removerElemento();
     
   } else {
     alert('ID inválido!');
+    input.value = '';
   }
 }
 
@@ -92,6 +95,10 @@ save_editarTask.onclick = function (e) {
   e.preventDefault();
   const id_Edit = document.getElementById('id_EditTask').value;
   const name_Edit = document.getElementById('new_nameTask').value;
+  const input = document.getElementById('id_EditTask');
+  const input2 = document.getElementById('new_nameTask');
+  input.value = '';
+  input2.value = '';
 
   alterarItem(tarefas, id_Edit, name_Edit);
 }
