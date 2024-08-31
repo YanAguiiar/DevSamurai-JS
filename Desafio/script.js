@@ -16,7 +16,6 @@ const tarefas = [
 
 function geraTarefas() {
   for (let tarefa of tarefas) {
-    console.log(tarefa);
     addTarefa(tarefa);
   }
 };
@@ -25,16 +24,36 @@ geraTarefas();
 function addTarefa(frela) {
   const ul = document.getElementById('listaFrela');
   const li = document.createElement('li');
+  const iEdit = document.createElement('i');
+  const iDelete = document.createElement('i');
+  const actions = document.createElement('div');
+
+  iDelete.className = 'bx bx-trash';
+  iEdit.className = 'bx bx-edit';
+
+  iEdit.onclick = function () {
+    modal.showModal();
+    document.getElementById('id_EditTask').value = frela.id;
+    document.getElementById('new_nameTask').value = frela.nome;
+  };
+  iDelete.onclick = function () {
+    tarefas.splice(tarefas.indexOf(frela), 1);
+    removerElemento();
+  };
+
   li.id = frela.id;
   li.textContent = ' # ' + frela.id + ' → ' + frela.nome;
+  actions.appendChild(iEdit);
+  actions.appendChild(iDelete);
+  li.appendChild(actions);
   ul.appendChild(li);
+  
 };
 
 idButaum.addEventListener('click', (e) => {
   const ul = document.getElementById('listaFrela');
   const input = document.getElementById('idFrela');
   const nextID = tarefas.length + 1;
-  console.log(tarefas);
   e.preventDefault();
 
   tarefas.push({
@@ -47,7 +66,7 @@ idButaum.addEventListener('click', (e) => {
 
 /* Fim area de adição de tasks */
 
-const idButaum2 = document.getElementById('butaumRemover');
+/* const idButaum2 = document.getElementById('butaumRemover'); */
 
 function removeTask() {
   const inputRemover = parseInt(document.getElementById('idRemover').value, 10) - 1;
@@ -77,10 +96,10 @@ function removerElemento() {
   geraTarefas();
 };
 
-idButaum2.addEventListener('click', (e) => {
+/* idButaum2.addEventListener('click', (e) => {
   e.preventDefault();
   removeTask();
-});
+}); */
 
 /* Fim area de remoção de tasks */
 const edit_Task = document.querySelector("#editTask")

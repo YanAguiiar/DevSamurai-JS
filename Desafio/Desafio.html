@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <title>To-Do</title>
 </head>
   <body>
@@ -12,7 +13,12 @@
         <legend>Adicionar Tarefa</legend>
         <label for="">Nome da Tarefa</label> <br>
         <input type="text" required minlength="5" maxlength="25" id="idFrela" placeholder="Insira o nome da Tarefa">
-        <button type="submit" id="butaumEnviar">Adicionar</button>
+        <button type="submit" id="butaumEnviar">
+          <i class="bx bx-plus-circle"></i>
+          
+          Adicionar
+        
+        </button>
       </fieldset>
     </form>
   <div>
@@ -32,14 +38,14 @@
       </form>
     </dialog>
   </div>
-<form id="removeTask">
+<!-- <form id="removeTask">
   <fieldset>
     <legend>Excluir Tarefa</legend>
     <label>ID Tarefa</label>
     <input inputmode="numeric" type="number" min="1"  placeholder="Insira apenas o ID" id="idRemover">
     <button type="submit" id="butaumRemover">Remover </button>
   </fieldset>
-</form>
+</form> -->
 
 </body> 
   <script src="script.js"></script>
