@@ -1,0 +1,145 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0e1621;
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  padding: 20px;
+}
+
+.contacts,
+.new-contact {
+  flex: 1;
+  margin-right: 20px;
+  background-color: #132133;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.contacts {
+  margin-right: 10px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.filter button {
+  background-color: #0d6efd;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-list .contact-item {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #1a2b47;
+  border-radius: 10px;
+}
+
+.contact-item .name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.contact-item .email {
+  font-size: 14px;
+}
+
+.tags .tag {
+  background-color: #17a2b8;
+  color: #fff;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin-right: 5px;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.new-contact form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-contact label {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.new-contact input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: none;
+  background-color: #1a2b47;
+  color: #fff;
+}
+
+.new-contact button {
+  background-color: #0d6efd;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.manage-tags {
+  margin-top: 20px;
+}
+
+.manage-tags h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.manage-tags form {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.manage-tags form input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-right: 10px;
+  background-color: #1a2b47;
+  color: #fff;
+}
+
+.manage-tags button {
+  background-color: #0d6efd;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.existing-tags .tag {
+  background-color: #17a2b8;
+  color: #fff;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin-right: 5px;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.tag-icon {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+i {
+  cursor: pointer;
+}

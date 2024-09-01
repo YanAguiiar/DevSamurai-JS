@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact List</title>
+  <link rel="stylesheet" href="/Desafio/Desafio 2.0/style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="contacts">
+      <h2>Contacts</h2>
+      <div class="filter">
+        <button><i class='bx bx-filter-alt bx-sm' id="iconFilter"></i></button>
+        
+      </div>
+      <div class="contact-list" id="contactList">
+        <!-- <div class="contact-item">
+          <p class="name">John Doe</p>
+          <p class="email">john@example.com | 555-1234</p>
+          <div class="tags">
+            <span class="tag">Work</span>
+            <span class="tag">Family</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <p class="name">Jane Smith</p>
+          <p class="email">jane@example.com | 555-5678</p>
+          <div class="tags">
+            <span class="tag">Work</span>
+            <span class="tag">Friends</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <p class="name">Bob Johnson</p>
+          <p class="email">bob@example.com | 555-9012</p>
+          <div class="tags">
+            <span class="tag">Family</span>
+          </div>
+        </div>-->
+      </div> 
+    </div>
+    <div class="new-contact">
+      <h2>Add New Contact</h2>
+      <form>
+        <label for="name">Name</label>
+        <input type="text" id="contactName" name="name">
+        <label for="email">Email</label>
+        <input type="email" id="contactEmail" name="email">
+        <label for="phone">Phone</label>
+        <input type="text" id="contactPhone" name="phone">
+        <button type="submit" id="addContact">Add Contact</button>
+      </form>
+      <div class="manage-tags">
+        <h3>Manage Tags</h3>
+        <form>
+          <label for="new-tag">New Tag</label>
+          <input type="text" id="new-tag" name="newTag">
+          <button type="submit" id="addTag">Add Tag</button>
+        </form>
+        <div class="existing-tags" id="tagList">
+          <span class="tag">Work</span>
+          <span class="tag-icon">&#9998;</span>
+          <span class="tag-icon">&#128465;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <dialog id="modal">
+    <form id="formEditContact">
+      <fieldset>
+        <legend>Editar contato</legend>
+        <label>Nome do Contato</label>
+        <input type="text" id="editNameContact" placeholder="Tony Stark"><br><br>
+        <label>Email do Contato</label>
+        <input type="email" id="editEmailContact" placeholder="email@example.com"><br><br>
+        <label>Telefone do Contato</label>
+        <input id="editPhoneContact" type="text" placeholder="11 5555-5555"><br><br>
+        <button type="submit" id="saveEditContact">Salvar</button>
+      </fieldset>
+    </form>
+  </dialog>
+</body>
+<script src="/Desafio/Desafio 2.0/script.js"></script>
+
+</html>
