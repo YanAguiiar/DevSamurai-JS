@@ -3,6 +3,7 @@ const contacts = [
     "name":"Jhon Doe",
     "email":"john@example.com",
     "phone":"55 5555-5555",
+    "id": "1",
     "tag":[
       "Friends",
       "Work"
@@ -12,6 +13,7 @@ const contacts = [
     "name":"Jane Smith",
     "email":"jane@example.com",
     "phone":"55 5555-5555",
+    "id": "2",
     "tag":[
       "Friends"
     ],
@@ -20,6 +22,7 @@ const contacts = [
     "name":"Bob Jhonson",
     "email":"bob@example.com",
     "phone":"55 5555-5555",
+    "id": "3",
     "tag":[
       "Family"
     ]
@@ -28,6 +31,7 @@ const contacts = [
     "name":"Nilton",
     "email":"nilton@serasa.com",
     "phone":"55 5555-5555",
+    "id": "4",
     "tag":[
       "Work"
     ]
@@ -92,10 +96,17 @@ function adicionarContatos(itens) {
     document.getElementById('editNameContact').value = itens.name;
     document.getElementById('editEmailContact').value = itens.email;
     document.getElementById('editPhoneContact').value = itens.phone;
+    modal.setAttribute('data-id', itens.id);
   }
   /* Colocar onclick para estar removendo o contato */
-
+  iDelete.onclick = function () {
+    contacts.splice(contacts.indexOf(itens), 1);
+    listaContatos.innerHTML = '';
+    gerarListas();
+  }
+  
   contactDiv.className = 'contact-item'
+  contactDiv.id = itens.id
   pContactName.className = 'name'
   pContactEmailPhone.className = 'email'
   tagDiv.className = 'tags'
@@ -111,7 +122,10 @@ function adicionarContatos(itens) {
   actions.appendChild(iDelete)
   contactDiv.appendChild(actions)
   
-
+  //Limpar os values dos inputs
+  contactName.value = '';
+  contactEmail.value = '';
+  contactPhone.value = '';
  /* Criação dos elementos tags, nos contatos. */
   for (tags of itens.tag){
     const tagSpan = document.createElement('span');
@@ -127,8 +141,31 @@ btnAddContact.addEventListener('click', (e) => {
     name: contactName.value,
     email: contactEmail.value,
     phone: contactPhone.value,
+    id: (contacts.length + 1).toString(),
     tag: []
   });
   adicionarContatos(contacts[contacts.length - 1]);
 });
 
+saveEditContact.onclick = function (e) {
+  modal.close();
+  e.preventDefault();
+  const nome = document.getElementById('editNameContact').value;
+  const email = document.getElementById('editEmailContact').value;
+  const phone = document.getElementById('editPhoneContact').value;
+  const contactID = modal.getAttribute('data-id');
+  editarDados(contacts ,nome, email, phone, contactID);
+}
+
+function editarDados(array, nome, email, phone, id) {
+  const contato = array.find((contato) => contato.id === id)
+
+  if (contato) {
+    contato.name = nome;
+    contato.email = email;
+    contato.phone = phone;
+    console.log(contato)
+    listaContatos.innerHTML = '';
+    gerarListas();
+  }
+}
