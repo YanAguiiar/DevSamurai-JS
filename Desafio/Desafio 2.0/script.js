@@ -24,7 +24,7 @@ const contacts = [
     "phone":"55 5555-5555",
     "id": "3",
     "tag":[
-      "Family"
+    "Family", "Coquinha gelada"
     ]
   },
   {
