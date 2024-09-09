@@ -148,8 +148,6 @@ i {
 dialog {
   border-radius: 10px;
   background-color: #132133;
-  /* padding: 20px; */
-  display: flex;
   flex-direction: column;
   align-items: end;
 }
@@ -175,7 +173,7 @@ fieldset {
   border: none;
 }
 
-#saveEditContact {
+#saveEditContact, #cancelEditContact {
   background-color: #0d6efd;
   color: #fff;
   padding: 10px;

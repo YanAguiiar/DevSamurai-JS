@@ -209,6 +209,11 @@ const editNameContact = document.getElementById('editNameContact');
 const editEmailContact = document.getElementById('editEmailContact');
 const editPhoneContact = document.getElementById('editPhoneContact');
 const saveEditContact = document.getElementById('saveEditContact');
+const cancelEditContact = document.getElementById('cancelEditContact');
+
+/* Totais contatos e etiquetas */
+const totalContacts = document.getElementById('totalContatos');
+const totalTags = document.getElementById('totalEtiquetas');
 
 function gerarListas() {
   for (let itens of contacts){
@@ -217,6 +222,8 @@ function gerarListas() {
   for (let etiqueta of tagContacts){
     adicionarEtiquetas(etiqueta)
   }
+  totalContacts.textContent = contacts.length;
+  totalTags.textContent = tagContacts.length;
 }
 
 gerarListas();
@@ -244,6 +251,7 @@ function adicionarContatos(itens) {
   iDelete.onclick = function () {
     contacts.splice(contacts.indexOf(itens), 1);
     listaContatos.innerHTML = '';
+    listaEtiquetas.innerHTML = '';
     gerarListas();
   }
   
@@ -291,6 +299,7 @@ btnAddContact.addEventListener('click', (e) => {
     id: (contacts.length + 1).toString(),
     tag: []
   });
+  totalContacts.textContent = contacts.length;
   adicionarContatos(contacts[contacts.length - 1]);
 });
 
@@ -300,6 +309,8 @@ btnAddTag.addEventListener('click', (e) => {
     tagName: newTag.value,
     contacts: []
   });
+  totalTags.textContent = tagContacts.length;
+  newTag.value = '';
   adicionarEtiquetas(tagContacts[tagContacts.length - 1]);
 });
 
@@ -326,3 +337,8 @@ function editarDados(array, nome, email, phone, id) {
     gerarListas();
   }
 }
+
+cancelEditContact.onclick = function (e) {
+  modal.close();
+  e.preventDefault();
+}, false;
