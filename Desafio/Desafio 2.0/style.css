@@ -142,12 +142,16 @@ h2 {
 
 i {
   cursor: pointer;
+  padding: 3px;
 }
 
 dialog {
   border-radius: 10px;
   background-color: #132133;
-  padding: 20px;
+  /* padding: 20px; */
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 }
 
 #formEditContact {

@@ -37,7 +37,6 @@ const contacts = [
     ]
   }
 ];
-
 const tagContacts = [
   {
     "tagName":"Friends",
@@ -50,6 +49,146 @@ const tagContacts = [
   {
     "tagName":"Work",
     "contacts":[0,2]
+  },
+  {
+    "tagName":"Coquinha gelada",
+    "contacts":[2]
+  },
+  {
+    "tagName":"School",
+    "contacts":[]
+  },
+  {
+    "tagName":"College",
+    "contacts":[]
+  },
+  {
+    "tagName":"University",
+    "contacts":[]
+  },
+  {
+    "tagName":"Church",
+    "contacts":[]
+  },
+  {
+    "tagName":"Sports",
+    "contacts":[]
+  },
+  {
+    "tagName":"Music",
+    "contacts":[]
+  },
+  {
+    "tagName":"Movies",
+    "contacts":[]
+  },
+  {
+    "tagName":"Books",
+    "contacts":[]
+  },
+  {
+    "tagName":"Travel",
+    "contacts":[]
+  },
+  {
+    "tagName":"Food",
+    "contacts":[]
+  },
+  {
+    "tagName":"Fashion",
+    "contacts":[]
+  },
+  {
+    "tagName":"Health",
+    "contacts":[]
+  },
+  {
+    "tagName":"Fitness",
+    "contacts":[]
+  },
+  {
+    "tagName":"Beauty",
+    "contacts":[]
+  },
+  {
+    "tagName":"Home",
+    "contacts":[]
+  },
+  {
+    "tagName":"Garden",
+    "contacts":[]
+  },
+  {
+    "tagName":"DIY",
+    "contacts":[]
+  },
+  {
+    "tagName":"Tech",
+    "contacts":[]
+  },
+  {
+    "tagName":"Auto",
+    "contacts":[]
+  },
+  {
+    "tagName":"Pets",
+    "contacts":[]
+  },
+  {
+    "tagName":"Photography",
+    "contacts":[]
+  },
+  {
+    "tagName":"Art",
+    "contacts":[]
+  },
+  {
+    "tagName":"Design",
+    "contacts":[]
+  },
+  {
+    "tagName":"Crafts",
+    "contacts":[]
+  },
+  {
+    "tagName":"Kids",
+    "contacts":[]
+  },
+  {
+    "tagName":"Parenting",
+    "contacts":[]
+  },
+  {
+    "tagName":"Weddings",
+    "contacts":[]
+  },
+  {
+    "tagName":"Events",
+    "contacts":[]
+  },
+  {
+    "tagName":"Marketing",
+    "contacts":[]
+  },
+  {
+    "tagName":"Business",
+    "contacts":[]
+  },
+  {
+    "tagName":"Finance",
+    "contacts":[]
+  },
+  {
+    "tagName":"Real Estate",
+    "contacts":[]
+  },
+  {
+    "tagName":"Travel",
+    "contacts":[]
+  },
+  {
+    "tagName":"Food",
+    "contacts":[]
   }
 ];
 /* Listas contatos e Etiquetas */
@@ -62,7 +201,7 @@ const contactName = document.getElementById('contactName');
 const contactPhone = document.getElementById('contactPhone');
 /* Elementos referente a adicionar tags */
 const btnAddTag = document.getElementById('addTag');
-const newTag = document.getElementById('newTag');
+const newTag = document.getElementById('new-tag');
 
 /* Referente a editar o contato */
 const modal = document.getElementById('modal');
@@ -74,6 +213,9 @@ const saveEditContact = document.getElementById('saveEditContact');
 function gerarListas() {
   for (let itens of contacts){
     adicionarContatos(itens)
+  }
+  for (let etiqueta of tagContacts){
+    adicionarEtiquetas(etiqueta)
   }
 }
 
@@ -134,7 +276,12 @@ function adicionarContatos(itens) {
     tagDiv.appendChild(tagSpan);
     }
 }
-
+function adicionarEtiquetas(etiqueta) {
+  const tagSpan = document.createElement('span');
+  tagSpan.className = 'tag';
+  tagSpan.textContent = etiqueta.tagName;
+  listaEtiquetas.appendChild(tagSpan);
+}
 btnAddContact.addEventListener('click', (e) => {
   e.preventDefault();
   contacts.push({
@@ -145,6 +292,15 @@ btnAddContact.addEventListener('click', (e) => {
     tag: []
   });
   adicionarContatos(contacts[contacts.length - 1]);
+});
+
+btnAddTag.addEventListener('click', (e) => {
+  e.preventDefault();
+  tagContacts.push({
+    tagName: newTag.value,
+    contacts: []
+  });
+  adicionarEtiquetas(tagContacts[tagContacts.length - 1]);
 });
 
 saveEditContact.onclick = function (e) {
@@ -166,6 +322,7 @@ function editarDados(array, nome, email, phone, id) {
     contato.phone = phone;
     console.log(contato)
     listaContatos.innerHTML = '';
+    listaEtiquetas.innerHTML = '';
     gerarListas();
   }
 }
