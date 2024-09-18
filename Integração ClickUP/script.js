@@ -1,5 +1,10 @@
 /* Requisição para pegar informações da Lista */
 const boardGeral = document.getElementById('board-geral');
+const botaoEditar = document.getElementsByClassName('bx-edit');
+
+//Editar tarefa Modal
+const editNomeTarefa = document.getElementById('inputNomeTarefa')
+
 
 function obterDadosLista() {
   const url = 'https://api.clickup.com/api/v2/list/901303163858';
@@ -84,11 +89,17 @@ function criarElementoTarefas(tasksLista) {
     const div = document.createElement('div');
     const spanName = document.createElement('span');
     const spanPriority = document.createElement('span');
+    const iEditTarefa = document.createElement('span');
+    const iDeleteTarefa = document.createElement('span');
+    iEditTarefa.className = 'bx bx-edit bx-xs';
+    iDeleteTarefa.className = 'bx bx-trash bx-xs';
     div.className = 'task-item';
     spanName.textContent = tarefa.nome;
     spanPriority.textContent = tarefa.prioridade.toUpperCase();
     spanPriority.className = `priority ${tarefa.prioridade.toLowerCase()}-priority`;
     div.appendChild(spanName);
+    div.appendChild(iEditTarefa);
+    div.appendChild(iDeleteTarefa);
     div.appendChild(spanPriority);
     statusTarefa.appendChild(div);
   }
