@@ -21,8 +21,8 @@
       
   </div>
 
-  <dialog>
-    <form id="formEditTarefa">
+  <dialog id="modal">
+    <form id="formEditTarefa" >
       <fieldset>
         <legend>Editar Tarefa</legend>
         <label>Nome da Tarefa</label>
@@ -31,10 +31,13 @@
         <textarea id="inputDescricaoTarefa" placeholder="Descrição da tarefa"></textarea>
         <label>Prioridade</label>
         <select id="inputPrioridadeTarefa">
-          <option value="1">🟢 Low</option>
-          <option value="2">🔵 Normal</option>
-          <option value="3">🟠 High</option>
-          <option value="4">🔴 Urgent</option>
+          <option value="4">🟢 Low</option>
+          <option value="3">🔵 Normal</option>
+          <option value="2">🟠 High</option>
+          <option value="1">🔴 Urgent</option>
+        </select>
+        <button type="submit" id="cancelEditTask">Cancelar</button>
+        <button type="submit" id="saveEditTask">Salvar</button>
       </fieldset>
     </form>
   </dialog>
