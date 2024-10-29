@@ -14,6 +14,16 @@ const priorityTarefa = document.getElementById('inputPrioridadeTarefa');
 
 const modal = document.getElementById('modal');
 
+// Modal para crair nova tarefa
+
+const btnNovaTarefa = document.getElementById('btnCriarTarefa');
+const saveAddTask = document.getElementById('saveAddTask');
+const cancelAddTask = document.getElementById('cancelAddTask');
+
+const inputNomeTarefa = document.getElementById('inputNomeTarefaAdd');
+const inputDescricaoTarefa = document.getElementById('inputDescricaoTarefaAdd');
+const inputPrioridadeTarefa = document.getElementById('inputPrioridadeTarefaAdd');
+
 function obterDadosLista() {
   const url = 'https://api.clickup.com/api/v2/list/901303163858';
   const headers = {
@@ -167,3 +177,48 @@ function atualizarTarefa(idTask, name, description, priority) {
 
 obterDadosLista();
 obterTarefas();
+
+function criarTarefa(name, description, priority) {
+  const url = 'https://api.clickup.com/api/v2/list/901303163858/task';
+  const headers = {
+    Authorization: 'pk_90622172_X3CMIRGA17LZHHWR4LFYPWYDS7J2FPNG',
+    'Content-Type': 'application/json',
+  };
+  const body = {
+    name: name,
+    description: description,
+    priority: priority,
+  };
+  fetch(url, {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify(body),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Erro ao criar a tarefa');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log('Sucesso', data);
+      window.location.reload();
+    })
+    .catch((error) => {
+      console.error('Erro:', error);
+    });
+}
+
+btnNovaTarefa.onclick = function() {
+  modalAddTask.showModal();
+};
+
+cancelAddTask.onclick = function() {
+  modalAddTask.close();
+};
+
+saveAddTask.addEventListener('click', function(event) {
+  event.preventDefault();
+  criarTarefa(inputNomeTarefa.value, inputDescricaoTarefa.value, inputPrioridadeTarefa.value);
+  modalAddTask.close();
+});

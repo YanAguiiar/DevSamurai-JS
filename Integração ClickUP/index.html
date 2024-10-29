@@ -16,8 +16,9 @@
     <h1>Task Board</h1>
 
     <div class="task-board" id="board-geral">
-      <span class='bx bx-edit bx-xs'><span/>
-      <span class='bx bx-trash bx-xs' ><span/>
+      <!-- <span class='bx bx-edit bx-xs'><span/>
+      <span class='bx bx-trash bx-xs' ><span/> -->
+      <span class='bx bx-message-alt-add bx-lg' id="btnCriarTarefa"></span>
       
   </div>
 
@@ -42,6 +43,26 @@
     </form>
   </dialog>
 
+  <dialog id="modalAddTask">
+    <form id="formAddTarefa">
+      <fieldset>
+        <legend>Adicionar Tarefa</legend>
+        <label>Nome da Tarefa</label>
+        <input type="text" id="inputNomeTarefaAdd" placeholder="Nome da tarefa">
+        <label>Descrição</label>
+        <textarea id="inputDescricaoTarefaAdd" placeholder="Descrição da tarefa"></textarea>
+        <label>Prioridade</label>
+        <select id="inputPrioridadeTarefaAdd">
+          <option value="4">🟢 Low</option>
+          <option value="3">🔵 Normal</option>
+          <option value="2">🟠 High</option>
+          <option value="1">🔴 Urgent</option>
+        </select>
+        <button type="submit" id="cancelAddTask">Cancelar</button>
+        <button type="submit" id="saveAddTask">Salvar</button>
+      </fieldset>
+    </form>
+  </dialog>
   <script src="script.js"></script>
 </body>
 
