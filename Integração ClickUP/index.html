@@ -18,7 +18,7 @@
     <div class="task-board" id="board-geral">
       <!-- <span class='bx bx-edit bx-xs'><span/>
       <span class='bx bx-trash bx-xs' ><span/> -->
-      <span class='bx bx-message-alt-add bx-lg' id="btnCriarTarefa"></span>
+      <span class='bx bx-message-alt-add bx-lg icon' id="btnCriarTarefa"></span>
       
   </div>
 
@@ -36,6 +36,11 @@
           <option value="3">🔵 Normal</option>
           <option value="2">🟠 High</option>
           <option value="1">🔴 Urgent</option>
+        </select>
+
+        <label>Status</label>
+        <select id="inputStatusTarefaEdit">
+
         </select>
         <button type="submit" id="cancelEditTask">Cancelar</button>
         <button type="submit" id="saveEditTask">Salvar</button>
@@ -57,6 +62,13 @@
           <option value="3">🔵 Normal</option>
           <option value="2">🟠 High</option>
           <option value="1">🔴 Urgent</option>
+        </select>
+
+        <label>Status</label>
+        <select id="inputStatusTarefaAdd">
+          <!-- <option value="1">🟢 To Do</option>
+          <option value="2">🔵 Doing</option>
+          <option value="3">🟠 Done</option> -->
         </select>
         <button type="submit" id="cancelAddTask">Cancelar</button>
         <button type="submit" id="saveAddTask">Salvar</button>

@@ -11,6 +11,7 @@ const saveEditTarefa = document.getElementById('saveEditTask');
 const descriptionTarefa = document.getElementById('inputDescricaoTarefa');
 const cancelEditTarefa = document.getElementById('cancelEditTask');
 const priorityTarefa = document.getElementById('inputPrioridadeTarefa');
+const statusTarefaEdit = document.getElementById('inputStatusTarefaEdit');
 
 const modal = document.getElementById('modal');
 
@@ -23,6 +24,7 @@ const cancelAddTask = document.getElementById('cancelAddTask');
 const inputNomeTarefa = document.getElementById('inputNomeTarefaAdd');
 const inputDescricaoTarefa = document.getElementById('inputDescricaoTarefaAdd');
 const inputPrioridadeTarefa = document.getElementById('inputPrioridadeTarefaAdd');
+const selectStatusTarefa = document.getElementById('inputStatusTarefaAdd');
 
 function obterDadosLista() {
   const url = 'https://api.clickup.com/api/v2/list/901303163858';
@@ -96,6 +98,18 @@ function criarElemento(statusTasks) {
     div.id = status;
     div.appendChild(hStatus);
     boardGeral.appendChild(div);
+
+    // Adiciona as opções no select de status em Criar Tarefa
+    const optionStatus = document.createElement('option');
+    optionStatus.value = status;
+    optionStatus.textContent = status.toUpperCase();
+    selectStatusTarefa.appendChild(optionStatus);
+
+    //Adiciona as opções no select de editar tarefa
+    const optionStatusEdit = document.createElement('option');
+    optionStatusEdit.value = status;
+    optionStatusEdit.textContent = status.toUpperCase();
+    statusTarefaEdit.appendChild(optionStatusEdit);
   }
 }
 
@@ -108,17 +122,18 @@ function criarElementoTarefas(tasksLista) {
     const iEditTarefa = document.createElement('span');
     const iDeleteTarefa = document.createElement('span');
     
-    iEditTarefa.className = 'bx bx-edit bx-xs';
+    iEditTarefa.className = 'bx bx-edit bx-xs icon';
     iEditTarefa.onclick = function() {
       console.log('Clicou');
       editNomeTarefa.value = tarefa.nome;
       descriptionTarefa.value = tarefa.description;
       priorityTarefa.value = tarefa.idPrioridade;
       tarefaSelecionadaId = tarefa.id; // Armazena o ID da tarefa atual
+      statusTarefaEdit.value = tarefa.status;
       modal.showModal();
     };
 
-    iDeleteTarefa.className = 'bx bx-trash bx-xs';
+    iDeleteTarefa.className = 'bx bx-trash bx-xs icon';
     div.className = 'task-item';
     spanName.textContent = tarefa.nome;
     spanPriority.textContent = tarefa.prioridade.toUpperCase();
@@ -135,7 +150,7 @@ saveEditTarefa.addEventListener('click', function(event) {
   event.preventDefault();
   console.log('Clicou');
   modal.close();
-  atualizarTarefa(tarefaSelecionadaId, editNomeTarefa.value, descriptionTarefa.value, priorityTarefa.value);
+  atualizarTarefa(tarefaSelecionadaId, editNomeTarefa.value, descriptionTarefa.value, priorityTarefa.value, statusTarefaEdit.value);
 });
 
 cancelEditTarefa.addEventListener('click', function(event) {
@@ -143,7 +158,7 @@ cancelEditTarefa.addEventListener('click', function(event) {
   modal.close();
 });
 
-function atualizarTarefa(idTask, name, description, priority) {
+function atualizarTarefa(idTask, name, description, priority, status) {
   const url = `https://api.clickup.com/api/v2/task/${idTask}`;
   const headers = {
     Authorization: 'pk_90622172_X3CMIRGA17LZHHWR4LFYPWYDS7J2FPNG',
@@ -153,6 +168,7 @@ function atualizarTarefa(idTask, name, description, priority) {
     name: name,
     description: description,
     priority: priority,
+    status: status.toLowerCase(),
   };
 
   fetch(url, {
@@ -178,7 +194,7 @@ function atualizarTarefa(idTask, name, description, priority) {
 obterDadosLista();
 obterTarefas();
 
-function criarTarefa(name, description, priority) {
+function criarTarefa(name, description, priority, status) {
   const url = 'https://api.clickup.com/api/v2/list/901303163858/task';
   const headers = {
     Authorization: 'pk_90622172_X3CMIRGA17LZHHWR4LFYPWYDS7J2FPNG',
@@ -188,6 +204,7 @@ function criarTarefa(name, description, priority) {
     name: name,
     description: description,
     priority: priority,
+    status: status.toLowerCase(),
   };
   fetch(url, {
     method: 'POST',
@@ -214,11 +231,12 @@ btnNovaTarefa.onclick = function() {
 };
 
 cancelAddTask.onclick = function() {
+  event.preventDefault();
   modalAddTask.close();
 };
 
 saveAddTask.addEventListener('click', function(event) {
   event.preventDefault();
-  criarTarefa(inputNomeTarefa.value, inputDescricaoTarefa.value, inputPrioridadeTarefa.value);
+  criarTarefa(inputNomeTarefa.value, inputDescricaoTarefa.value, inputPrioridadeTarefa.value, selectStatusTarefa.value);
   modalAddTask.close();
 });
